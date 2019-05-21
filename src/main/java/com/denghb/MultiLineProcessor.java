@@ -90,7 +90,14 @@ public class MultiLineProcessor extends AbstractProcessor {
         if (null == sourceCode) {
             FileObject fileObject = filer.getResource(StandardLocation.CLASS_OUTPUT, packageName, className + JavaFileObject.Kind.SOURCE.extension);
             String targetPath = fileObject.toUri().getPath();
-            String sourcePath = targetPath.replace("target/classes", "src/main/java");
+
+            String sourcePath = null;
+            if (targetPath.contains("target/classes")) {
+                sourcePath = targetPath.replace("target/classes", "src/main/java");
+            }
+            if (targetPath.contains("target/test-classes")) {
+                sourcePath = targetPath.replace("target/test-classes", "src/test/java");
+            }
             File f = new File(sourcePath);
             FileInputStream is = new FileInputStream(f);
             byte[] bytes = new byte[is.available()];

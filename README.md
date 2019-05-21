@@ -7,7 +7,7 @@ So easy
 <dependency>
     <groupId>com.denghb</groupId>
     <artifactId>multi-line</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
 </dependency>
 ```
 
@@ -29,3 +29,7 @@ public class MultiLineTest {
 }
 
 ```
+
+### Test 
+IntelliJ IDEA 2019.1.2 (Community Edition)
+
