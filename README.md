@@ -30,6 +30,17 @@ public class MultiLineTest {
 
 ```
 
+### Output
+```
+
+        Hello World!
+    
+
+            I'm multi-line
+        
+```
+
+
 ### Test 
 IntelliJ IDEA 2019.1.2 (Community Edition)
 
