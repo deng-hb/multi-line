@@ -41,7 +41,7 @@ public class MultiLineProcessor extends AbstractProcessor {
 
         messager = env.getMessager();
         if (!(env instanceof JavacProcessingEnvironment)) {
-            messager.printMessage(Diagnostic.Kind.ERROR, "EormProcessor Need com.sun.tools.javac.processing.JavacProcessingEnvironment");
+            messager.printMessage(Diagnostic.Kind.ERROR, "MultiLineProcessor Need com.sun.tools.javac.processing.JavacProcessingEnvironment");
         }
 
         JavacProcessingEnvironment jpe = (JavacProcessingEnvironment) env;
@@ -69,7 +69,7 @@ public class MultiLineProcessor extends AbstractProcessor {
 
     private void doProcess(Element element) throws Exception {
 
-        if (element.getKind() != ElementKind.CLASS) {
+        if (element.getKind() != ElementKind.CLASS && element.getKind() != ElementKind.INTERFACE) {
             return;
         }
 
@@ -138,7 +138,7 @@ public class MultiLineProcessor extends AbstractProcessor {
             public void visitVarDef(JCTree.JCVariableDecl jcVariableDecl) {
                 super.visitVarDef(jcVariableDecl);
 
-                // String str = ""/*{code}*/
+                // String str = ""/*{code}*/;
                 int pos = jcVariableDecl.pos + jcVariableDecl.name.length() + 3;
                 String content = templates.get(pos);
                 if (null != content) {
